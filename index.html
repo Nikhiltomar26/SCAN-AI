@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Report Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏥 Medical Report Analyzer</h1>
+            <p>Upload your medical report image to get an easy-to-understand explanation</p>
+        </header>
+
+        <main>
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <p class="upload-text">Click to upload or drag and drop</p>
+                    <p class="upload-subtext">PNG, JPG, JPEG, BMP, TIFF (Max 10MB)</p>
+                    <input type="file" id="fileInput" accept="image/jpeg,image/jpg,image/png,image/bmp,image/tiff" hidden>
+                </div>
+                
+                <div class="image-preview" id="imagePreview" style="display: none;">
+                    <img id="previewImage" alt="Uploaded medical report">
+                    <button class="btn-remove" id="removeImage">✕ Remove</button>
+                </div>
+
+                <button class="btn-analyze" id="analyzeBtn" disabled>
+                    Analyze Report
+                </button>
+            </section>
+
+            <!-- Loading Indicator -->
+            <div class="loading" id="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>Analyzing your medical report...</p>
+            </div>
+
+            <!-- Error Message -->
+            <div class="error" id="error" style="display: none;"></div>
+
+            <!-- Results Section -->
+            <section class="results" id="results" style="display: none;">
+                <!-- Explanation Card -->
+                <div class="card">
+                    <div class="card-header" id="explanationHeader">
+                        <h2>📋 Plain Language Explanation</h2>
+                        <button class="toggle-btn" id="toggleExplanation">▼</button>
+                    </div>
+                    <div class="card-content" id="explanationContent">
+                        <p id="explanation"></p>
+                    </div>
+                </div>
+
+                <!-- Highlights Card -->
+                <div class="card">
+                    <div class="card-header" id="highlightsHeader">
+                        <h2>✨ Key Highlights</h2>
+                        <button class="toggle-btn" id="toggleHighlights">▼</button>
+                    </div>
+                    <div class="card-content" id="highlightsContent">
+                        <ul id="highlights"></ul>
+                    </div>
+                </div>
+
+                <!-- Raw Text Card -->
+                <div class="card">
+                    <div class="card-header" id="rawTextHeader">
+                        <h2>📄 Extracted Text (Raw OCR)</h2>
+                        <button class="toggle-btn" id="toggleRawText">▼</button>
+                    </div>
+                    <div class="card-content collapsed" id="rawTextContent">
+                        <pre id="rawText"></pre>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>⚕️ For informational purposes only. Always consult with healthcare professionals.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
